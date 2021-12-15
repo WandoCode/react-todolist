@@ -64,6 +64,9 @@ function FormAddTask(props) {
       /* Send object to DB */
       postToDb("http://localhost:8080/tasks", newTask);
 
+      /* Tell App that db has changed */
+      props.dbHasChanged();
+
       /* Rest form values*/
       setDueDate(today);
       setDescription("");
