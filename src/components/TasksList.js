@@ -5,21 +5,37 @@ const axios = require("axios");
 
 function TasksList(props) {
   const [tasksObjectArray, setTasksObjectArray] = useState([]);
+  const [lookDb, setLookDb] = useState(true);
 
-  const showTasks = () => {
-    return tasksObjectArray.map((task) => {
-      return <OneTask task={task} key={uniqid()} />;
-    });
+  /* Remove the task from list */
+  const removeFromDb = (id) => {
+    /* Remove it from db */
+    axios.delete(`http://localhost:8080/tasks/${id}`);
+
+    /* Ask to update rendering */
+    setLookDb(true);
   };
 
   useEffect(() => {
-    if (props.lookDb) {
+    if (props.lookDb || lookDb) {
       axios.get("http://localhost:8080/tasks").then((resp) => {
         const data = resp.data;
         setTasksObjectArray(data);
+        setLookDb(false);
       });
     }
-  }, [props.lookDb]);
+  }, [props.lookDb, lookDb]);
+
+  /* For rendering. Show all tasks in the db with the choosen sorting.*/
+  const showTasks = (sorting) => {
+    if (sorting === undefined || sorting === "adding") {
+      return tasksObjectArray.map((task) => {
+        return (
+          <OneTask task={task} key={uniqid()} removeFromDb={removeFromDb} />
+        );
+      });
+    }
+  };
 
   return <div className="tasks-list">{showTasks()}</div>;
 }

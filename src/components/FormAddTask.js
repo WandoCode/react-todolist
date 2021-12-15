@@ -98,14 +98,9 @@ function FormAddTask(props) {
 
   /* Post object to DB */
   const postToDb = (dbURL, objectForDd) => {
-    axios
-      .post(dbURL, objectForDd)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios.post(dbURL, objectForDd).catch(function (error) {
+      console.log(error);
+    });
   };
 
   return (
