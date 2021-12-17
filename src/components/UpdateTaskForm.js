@@ -113,7 +113,7 @@ function UpdateTaskForm(props) {
   };
 
   return (
-    <form className="addTask" onSubmit={submitForm}>
+    <form className="updateTask" onSubmit={submitForm}>
       <label htmlFor="dueDate">Due date</label>
       <input
         type="date"

@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-
 function OneTask(props) {
-  const [isActive, setisActive] = useState(false);
-
   /* Ask to TasksList to remove the task */
   const removeTask = () => {
     props.removeFromDb(props.task.id);
@@ -16,12 +12,15 @@ function OneTask(props) {
   };
 
   return (
-    <div
-      id={props.task.id}
-      className={props.putSelectClass ? "task selected" : "task"}
-      onClick={taskClicked}
-    >
-      due date: {props.task.dueDate} - {props.task.description}{" "}
+    <div className="task-infos-container">
+      <div
+        id={props.task.id}
+        className={props.putSelectClass ? "task selected" : "task"}
+        onClick={taskClicked}
+      >
+        due date: {props.task.dueDate} - {props.task.description}{" "}
+      </div>
+
       <button onClick={removeTask}>x</button>
     </div>
   );

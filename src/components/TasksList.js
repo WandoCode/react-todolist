@@ -3,6 +3,7 @@ import OneTask from "./OneTask";
 import uniqid from "uniqid";
 import Sorting from "./Sorting";
 import UpdateTaskForm from "./UpdateTaskForm";
+import { Fragment } from "react/cjs/react.production.min";
 
 const axios = require("axios");
 
@@ -15,31 +16,22 @@ function TasksList(props) {
   const [updateTaskForm, setUpdateTaskForm] = useState();
   const [activeTask, setActiveTask] = useState();
 
-  /* Look into db when new datas are available */
+  /* Update list display when informations change */
   useEffect(() => {
-    if (props.lookDb || lookDb) {
-      axios.get("http://localhost:8080/tasks").then((resp) => {
-        const data = resp.data;
-        setTasksObjectArray(data);
-        setLookDb(false);
-      });
-    }
-  }, [props.lookDb, lookDb]);
+    setTasksObjectArray(props.tasksObjectArray);
+  }, [props.tasksObjectArray]);
 
   ///* TASK LIST DISPLAY *///
   /* Remove the task from list */
   const removeFromDb = (id) => {
-    /* Remove it from db */
-    axios.delete(`http://localhost:8080/tasks/${id}`);
-
-    /* Ask to update rendering */
-    setLookDb(true);
+    /* Ask to remove it from db */
+    props.removeTask(id);
   };
 
-  /* Update the tasks displayed when the List of task change */
+  /* Update the tasks displayed when the List of task change + set the task as active in the list*/
   useEffect(() => {
     setSortedList(showTasks());
-  }, [tasksObjectArray, sorting, reverseSortOrder]);
+  }, [tasksObjectArray, sorting, reverseSortOrder, activeTask]);
 
   ///* SORTING *///
   /* Change the sorting of the list */
@@ -55,7 +47,7 @@ function TasksList(props) {
   /* For rendering. Show all tasks in the db with the choosen sorting.*/
   const showTasks = () => {
     /* Default sorting is the add order (in the db) */
-    let sortedTasksList = [...tasksObjectArray];
+    let sortedTasksList = [...props.tasksObjectArray];
 
     /* Sort by due Date */
     if (sorting === "dueDate") {
@@ -86,40 +78,29 @@ function TasksList(props) {
     });
   };
 
+  ///* SHOW ACTIVE ELEMENT *///
+  /* Set the id of the current active task of the list */
   const isActive = (id) => {
     setActiveTask(id);
   };
-  useEffect(() => {
-    console.log("e");
-    setSortedList(showTasks());
-  }, [activeTask]);
 
   ///* TASK UPDATE *///
   /* Open the component to update tasks values */
   const openTask = (id) => {
-    setUpdateTaskForm(
-      <UpdateTaskForm
-        askCloseTask={closeTask}
-        defaultValues={tasksObjectArray.find((task) => {
-          return task.id === id;
-        })}
-      />
-    );
+    props.taskClicked(id);
   };
 
-  const closeTask = () => {
-    setUpdateTaskForm(null);
-    setLookDb(true);
-  };
   return (
-    <div className="tasks-list">
-      <Sorting
-        chooseSorting={chooseSorting}
-        chooseReverseOrder={chooseReverseOrder}
-      />
-      {sortedList}
+    <Fragment>
+      <div className="task-sorting-container">
+        <Sorting
+          chooseSorting={chooseSorting}
+          chooseReverseOrder={chooseReverseOrder}
+        />
+        <div className="tasks-list">{sortedList}</div>
+      </div>
       {updateTaskForm}
-    </div>
+    </Fragment>
   );
 }
 
