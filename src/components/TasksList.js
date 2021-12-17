@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import OneTask from "./OneTask";
 import uniqid from "uniqid";
 import Sorting from "./Sorting";
+import UpdateTaskForm from "./UpdateTaskForm";
+
 const axios = require("axios");
 
 function TasksList(props) {
@@ -10,6 +12,8 @@ function TasksList(props) {
   const [sorting, setSorting] = useState("addDate");
   const [sortedList, setSortedList] = useState();
   const [reverseSortOrder, setReverseSortOrder] = useState(false);
+  const [updateTaskForm, setUpdateTaskForm] = useState();
+  const [activeTask, setActiveTask] = useState();
 
   /* Look into db when new datas are available */
   useEffect(() => {
@@ -62,15 +66,51 @@ function TasksList(props) {
       });
     }
 
+    /* Reverse final array if needed */
     if (reverseSortOrder) {
       sortedTasksList.reverse();
     }
 
+    /* Return component */
     return sortedTasksList.map((task) => {
-      return <OneTask task={task} key={uniqid()} removeFromDb={removeFromDb} />;
+      return (
+        <OneTask
+          task={task}
+          key={uniqid()}
+          removeFromDb={removeFromDb}
+          openTask={openTask}
+          isActive={isActive}
+          putSelectClass={activeTask === task.id ? true : false}
+        />
+      );
     });
   };
 
+  const isActive = (id) => {
+    setActiveTask(id);
+  };
+  useEffect(() => {
+    console.log("e");
+    setSortedList(showTasks());
+  }, [activeTask]);
+
+  ///* TASK UPDATE *///
+  /* Open the component to update tasks values */
+  const openTask = (id) => {
+    setUpdateTaskForm(
+      <UpdateTaskForm
+        askCloseTask={closeTask}
+        defaultValues={tasksObjectArray.find((task) => {
+          return task.id === id;
+        })}
+      />
+    );
+  };
+
+  const closeTask = () => {
+    setUpdateTaskForm(null);
+    setLookDb(true);
+  };
   return (
     <div className="tasks-list">
       <Sorting
@@ -78,6 +118,7 @@ function TasksList(props) {
         chooseReverseOrder={chooseReverseOrder}
       />
       {sortedList}
+      {updateTaskForm}
     </div>
   );
 }
