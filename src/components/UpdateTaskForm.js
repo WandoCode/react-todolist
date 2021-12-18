@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 const axios = require("axios");
 
 function UpdateTaskForm(props) {
-  const MAX_LENGTH = 150;
-  const MAX_NOTE_LENGTH = 10000;
+  const MAX_LENGTH = 40;
+  const MAX_NOTE_LENGTH = 5000;
 
   /* Get The date of dueDate in the correct format to be set as the value of an input:date */
   const today = new Date().toISOString().slice(0, 10);
@@ -12,7 +12,7 @@ function UpdateTaskForm(props) {
   const [dueDate, setDueDate] = useState("");
   const [description, setDescription] = useState("");
   const [notes, setNotes] = useState("");
-  const [taskState, setTaskState] = useState(false);
+  const [taskState, setTaskState] = useState();
   const [showErrorDescription, setshowErrorDescription] = useState(false);
   const [showErrorForm, setShowErrorForm] = useState(false);
   const [showErrorNotes, setShowErrorNotes] = useState(false);
@@ -22,6 +22,7 @@ function UpdateTaskForm(props) {
     setDueDate(props.defaultValues.dueDate);
     setDescription(props.defaultValues.description);
     setNotes(props.defaultValues.notes);
+    setTaskState(props.defaultValues.done);
   }, [props.defaultValues]);
 
   /* Handle button */
@@ -87,6 +88,7 @@ function UpdateTaskForm(props) {
 
       /* Tell App that db has changed and that the component can be closed*/
       props.askCloseTask();
+      props.dbHasChanged();
     } else {
       /* If datas invalid: show adequat error messages */
       setShowErrorForm(true);
@@ -114,60 +116,68 @@ function UpdateTaskForm(props) {
 
   return (
     <form className="updateTask" onSubmit={submitForm}>
-      <label htmlFor="dueDate">Due date</label>
-      <input
-        type="date"
-        name="dueDate"
-        id="dueDate"
-        value={dueDate}
-        onChange={changeDueDate}
-      />
+      <button onClick={closeTask}>X</button>
+      <div className="inner-form">
+        <div className="upper-form">
+          <label htmlFor="description">Task</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            maxLength={MAX_LENGTH}
+            value={description}
+            onChange={getDescriptionValue}
+            autoComplete="off"
+          />
 
-      <label htmlFor="description">Task</label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        maxLength={MAX_LENGTH}
-        value={description}
-        onChange={getDescriptionValue}
-      />
-
-      <textarea
-        name="notes"
-        id="note-area"
-        maxLength={MAX_NOTE_LENGTH}
-        value={notes}
-        onChange={getNotes}
-      ></textarea>
-      {showErrorNotes && (
-        <div className="notes-error">
-          Try to write less than {MAX_NOTE_LENGTH}
+          <label htmlFor="dueDate">Due date</label>
+          <input
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            value={dueDate}
+            onChange={changeDueDate}
+          />
         </div>
-      )}
-      {showErrorDescription && (
-        <div className="description-too-short">
-          Write a (short) description of your task.
+        <div className="mid-form">
+          <textarea
+            name="notes"
+            id="note-area"
+            maxLength={MAX_NOTE_LENGTH}
+            value={notes}
+            onChange={getNotes}
+            autoComplete="off"
+          ></textarea>
+          {showErrorNotes && (
+            <div className="notes-error">
+              Try to write less than {MAX_NOTE_LENGTH}
+            </div>
+          )}
+          {showErrorDescription && (
+            <div className="description-too-short">
+              Write a (short) description of your task.
+            </div>
+          )}
         </div>
-      )}
 
-      <input type="submit" value="Add" />
+        <div className="lower-form">
+          <input className="submitBtn" type="submit" value="Add" />
 
-      {showErrorForm && (
-        <div className="invalid-Datas"> Please, resolves error(s).</div>
-      )}
+          {showErrorForm && (
+            <div className="invalid-Datas"> Please, resolves error(s).</div>
+          )}
 
-      {taskState ? (
-        <button onClick={toggleState} className="button-not-done">
-          Mark as not done
-        </button>
-      ) : (
-        <button onClick={toggleState} className="button-done">
-          Mark as done
-        </button>
-      )}
-
-      <button onClick={closeTask}>Close</button>
+          {taskState ? (
+            <button onClick={toggleState} className="button-not-done">
+              Mark as not done
+            </button>
+          ) : (
+            <button onClick={toggleState} className="button-done">
+              Mark as done
+            </button>
+          )}
+        </div>
+      </div>
     </form>
   );
 }

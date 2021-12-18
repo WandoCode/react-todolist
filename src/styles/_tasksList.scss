@@ -1,0 +1,36 @@
+.task-sorting-container {
+  .tasks-list {
+  }
+
+  .task {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .task-infos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $task-color;
+
+    margin: 8px 0;
+
+    button {
+      margin-left: 10px;
+    }
+    &.selected {
+      background-color: $selected-task-color;
+    }
+  }
+
+  .rmv-task-btn {
+    border-radius: $rmv-task-btn-size;
+    height: $rmv-task-btn-size;
+    width: $rmv-task-btn-size;
+    color: $rmv-task-btn-font-color;
+    &:hover {
+      background-color: $rmv-task-btn-bkgd;
+    }
+  }
+}

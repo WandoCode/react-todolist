@@ -34,9 +34,9 @@ function Sorting(props) {
         <option value="dueDate">Due date</option>
       </select>
       {reverseOrder ? (
-        <button onClick={handleOrder}>up</button>
+        <button onClick={handleOrder}>&uarr;</button>
       ) : (
-        <button onClick={handleOrder}>down</button>
+        <button onClick={handleOrder}>&#8595;</button>
       )}
     </div>
   );

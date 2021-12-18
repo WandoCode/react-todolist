@@ -1,0 +1,34 @@
+.addTask {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 20px 0;
+
+  display: flex;
+  align-items: center;
+
+  background-color: $main-bkgd-color;
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    #description {
+      width: 90%;
+    }
+    #dueDate {
+      width: min-content;
+    }
+  }
+
+  .addTaskBtn {
+    width: 50px;
+    height: 50px;
+    img {
+      filter: $add-task-btn-color;
+    }
+  }
+}

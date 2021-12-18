@@ -1,0 +1,12 @@
+.updateTask {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .inner-form {
+    margin-top: 10px;
+  }
+  textarea {
+    width: 100%;
+    height: 200px;
+  }
+}

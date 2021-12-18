@@ -12,16 +12,20 @@ function OneTask(props) {
   };
 
   return (
-    <div className="task-infos-container">
-      <div
-        id={props.task.id}
-        className={props.putSelectClass ? "task selected" : "task"}
-        onClick={taskClicked}
-      >
-        due date: {props.task.dueDate} - {props.task.description}{" "}
+    <div
+      className={
+        props.putSelectClass
+          ? "task-infos-container selected"
+          : "task-infos-container"
+      }
+    >
+      <div id={props.task.id} className="task" onClick={taskClicked}>
+        {props.task.description}{" "}
       </div>
 
-      <button onClick={removeTask}>x</button>
+      <button className="rmv-task-btn" onClick={removeTask}>
+        x
+      </button>
     </div>
   );
 }

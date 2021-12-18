@@ -2,18 +2,13 @@ import { useState, useEffect } from "react";
 import OneTask from "./OneTask";
 import uniqid from "uniqid";
 import Sorting from "./Sorting";
-import UpdateTaskForm from "./UpdateTaskForm";
 import { Fragment } from "react/cjs/react.production.min";
-
-const axios = require("axios");
 
 function TasksList(props) {
   const [tasksObjectArray, setTasksObjectArray] = useState([]);
-  const [lookDb, setLookDb] = useState(true);
   const [sorting, setSorting] = useState("addDate");
   const [sortedList, setSortedList] = useState();
   const [reverseSortOrder, setReverseSortOrder] = useState(false);
-  const [updateTaskForm, setUpdateTaskForm] = useState();
   const [activeTask, setActiveTask] = useState();
 
   /* Update list display when informations change */
@@ -99,7 +94,6 @@ function TasksList(props) {
         />
         <div className="tasks-list">{sortedList}</div>
       </div>
-      {updateTaskForm}
     </Fragment>
   );
 }

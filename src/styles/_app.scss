@@ -1,4 +1,16 @@
-body {
-  background-color: black;
-  color: white;
+.App {
+  display: flex;
+  height: 500px;
+  .side {
+    height: 100%;
+    margin: 20px;
+    background-color: $main-bkgd-color;
+    overflow: auto;
+    scrollbar-color: red;
+  }
+  .left-side {
+    width: 500px;
+    padding-right: 20px;
+    padding-left: 10px;
+  }
 }

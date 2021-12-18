@@ -27,18 +27,6 @@ function App() {
     setLookDb(true);
   };
 
-  /* Handle click on a task of the list*/
-  const handleTaskClicked = (id) => {
-    setUpdateTaskForm(
-      <UpdateTaskForm
-        askCloseTask={closeTask}
-        defaultValues={tasksObjectArray.find((task) => {
-          return task.id === id;
-        })}
-      />
-    );
-  };
-
   /* Ask to remove the updateForm */
   const closeTask = () => {
     setUpdateTaskForm(undefined);
@@ -55,14 +43,31 @@ function App() {
     closeTask();
   };
 
+  /* Handle click on a task of the list*/
+  const handleTaskClicked = (id) => {
+    setUpdateTaskForm(
+      <div className="right-side side">
+        <UpdateTaskForm
+          askCloseTask={closeTask}
+          defaultValues={tasksObjectArray.find((task) => {
+            return task.id === id;
+          })}
+          dbHasChanged={dbHasChanged}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="App">
-      <FormAddTask dbHasChanged={dbHasChanged} />
-      <TasksList
-        taskClicked={handleTaskClicked}
-        tasksObjectArray={tasksObjectArray}
-        removeTask={removeTask}
-      />
+      <div className="left-side side">
+        <FormAddTask dbHasChanged={dbHasChanged} />
+        <TasksList
+          taskClicked={handleTaskClicked}
+          tasksObjectArray={tasksObjectArray}
+          removeTask={removeTask}
+        />
+      </div>
       {updateTaskForm}
     </div>
   );
