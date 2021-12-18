@@ -167,11 +167,12 @@ input:focus {
 
 *::-webkit-scrollbar-track {
   background: gray;
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: #3b3b3b;
-  border-radius: 20px;
+  border-radius: 1px;
 }
 
 .App {
@@ -237,6 +238,22 @@ input:focus {
   color: white;
   padding: 0;
   margin-left: 5px;
+}
+.sorting select {
+  background-color: gray;
+  color: #4d4d4d;
+  border-radius: 25px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 2px 5px;
+}
+.sorting select:focus {
+  outline: none;
+}
+.sorting select option {
+  background: #b3b3b3;
+  color: #353535;
 }
 
 .task-sorting-container .task {

@@ -11,4 +11,19 @@
     padding: 0;
     margin-left: 5px;
   }
+  select {
+    background-color: $select-sorting-bkgd;
+    color: $select-sorting-color;
+    border-radius: 25px;
+    appearance: none;
+    padding: 2px 5px;
+
+    &:focus {
+      outline: none;
+    }
+    option {
+      background: $option-bkgd;
+      color: $option-sorting-color;
+    }
+  }
 }

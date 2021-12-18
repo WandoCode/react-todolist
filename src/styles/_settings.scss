@@ -163,9 +163,10 @@ input {
 
 *::-webkit-scrollbar-track {
   background: $scrollbar-bkgd;
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbar-thumb-color;
-  border-radius: 20px;
+  border-radius: 1px;
 }
