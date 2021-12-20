@@ -1,76 +1,20 @@
 {
   "tasks": [
     {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "Teeeestzzzzzzzz",
+      "date": "2021-12-20",
+      "dueDate": "2021-12-21",
+      "description": "My first task!",
       "notes": "",
       "done": false,
-      "id": 9
+      "id": 1
     },
     {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "Teeeestzzzzzzzz",
+      "date": "2021-12-20",
+      "dueDate": "2021-12-27",
+      "description": "Go to bed early next week.",
       "notes": "",
       "done": false,
-      "id": 10
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-      "notes": "",
-      "done": false,
-      "id": 11
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "TTTTTTTTTTTTTTTTTTTTTTATTTTTTTTTTTTTTTTT",
-      "notes": "",
-      "done": false,
-      "id": 12
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "Teeeestzzzzzzzz",
-      "notes": "",
-      "done": false,
-      "id": 13
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2022-01-02",
-      "description": "zzz",
-      "notes": "",
-      "done": false,
-      "id": 14
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-18",
-      "description": "eeee",
-      "notes": "",
-      "done": false,
-      "id": 15
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2021-12-25",
-      "description": "zzzz",
-      "notes": "",
-      "done": false,
-      "id": 16
-    },
-    {
-      "date": "2021-12-18",
-      "dueDate": "2022-01-06",
-      "description": "aaaaaa",
-      "notes": "",
-      "done": false,
-      "id": 17
+      "id": 2
     }
   ]
 }

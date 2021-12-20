@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -123,33 +129,44 @@ table {
   border-spacing: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  background-color: black;
-  color: white;
+  font-family: "Lado";
+  background-color: rgba(80, 80, 80, 1);
+  color: black;
+  margin-left: 180px;
+  margin-top: 120px;
 }
 
 button,
 .submitBtn {
   background: none;
   border: none;
+  font-family: "Lado";
+}
+select {
+  font-family: "Lado";
 }
 
 input {
   background-color: $input-bkgd;
   border: none;
 
-  border-radius: 10px;
-  padding: 5px 10px;
+  border-radius: 24px;
+  height: 30px;
+  font-family: "Lado";
 
   &:focus {
     outline: none;
   }
 }
 
+input[type="text"] {
+  padding-left: 10px;
+}
+input[type="date"] {
+  text-align: center;
+  padding: 0 20px;
+}
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
@@ -169,4 +186,12 @@ input {
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbar-thumb-color;
   border-radius: 1px;
+}
+
+.btn-style-1 {
+  border-radius: 25px;
+  background-color: $add-task-btn-bkgd;
+
+  font-size: 20px;
+  color: white;
 }

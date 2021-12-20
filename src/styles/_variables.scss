@@ -1,20 +1,24 @@
-$selected-task-color: rgb(187, 187, 187);
-$task-color: rgb(153, 153, 153);
+$selected-task-color: rgba(251, 251, 251, 1);
+$task-color: rgba(196, 196, 196, 1);
 
-$main-bkgd-color: rgb(78, 78, 78);
+$main-bkgd-color: rgba(227, 227, 227, 1);
 
 $rmv-task-btn-size: 25px;
-$rmv-task-btn-font-color: white;
+$rmv-task-btn-font-color: rgba(120, 120, 120, 1);
 $rmv-task-btn-bkgd: rgb(170, 170, 170);
 
-$add-task-btn-color: invert(61%) sepia(32%) saturate(735%) hue-rotate(78deg)
-  brightness(102%) contrast(91%);
+$add-task-btn-bkgd: rgba(135, 135, 135, 1);
 
 $scrollbar-thumb-color: rgb(59, 59, 59);
 $scrollbar-bkgd: gray;
 
-$input-bkgd: rgb(204, 204, 204);
-$select-sorting-color: rgb(77, 77, 77);
+$input-bkgd: white;
+$select-sorting-color: white;
 $select-sorting-bkgd: gray;
 $option-sorting-color: rgb(53, 53, 53);
 $option-bkgd: rgb(179, 179, 179);
+
+///
+
+$side-padding: 20px;
+$side-width: 460px;

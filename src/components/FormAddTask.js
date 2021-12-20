@@ -13,7 +13,6 @@ function FormAddTask(props) {
   const [description, setDescription] = useState("");
   const [showErrorDescription, setshowErrorDescription] = useState(false);
   const [showErrorDate, setShowErrorDate] = useState(false);
-  const [showErrorForm, setShowErrorForm] = useState(false);
 
   useEffect(() => {
     if (props.defaultValues) {
@@ -60,8 +59,6 @@ function FormAddTask(props) {
       description.length > 0 &&
       description.length <= MAX_LENGTH
     ) {
-      setShowErrorForm(false);
-
       /* Create the object to store in db */
       const newTask = {
         date: today,
@@ -82,7 +79,6 @@ function FormAddTask(props) {
       setDescription("");
     } else {
       /* If datas invalid: show adequat error messages */
-      setShowErrorForm(true);
       toggleDateErrorMessage(dueDate);
       toggleDescriptionErrorMessage(description);
     }
@@ -116,40 +112,43 @@ function FormAddTask(props) {
   return (
     <form className="addTask">
       <div className="input-wrapper">
-        <label htmlFor="description">Task</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          maxLength={MAX_LENGTH}
-          value={description}
-          onChange={getDescriptionValue}
-          autoComplete="off"
-        />
-        {showErrorDescription && (
-          <div className="description-too-short">
-            Write a (short) description of your task.
-          </div>
-        )}
-
-        <label htmlFor="dueDate">Due date</label>
-        <input
-          type="date"
-          name="dueDate"
-          id="dueDate"
-          value={dueDate}
-          onChange={changeDueDate}
-        />
-        {showErrorDate && (
-          <div className="date-in-paste">Choose a date in the future.</div>
-        )}
+        <div className="addTask-upper-form">
+          <label htmlFor="description">Task</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            maxLength={MAX_LENGTH}
+            value={description}
+            onChange={getDescriptionValue}
+            autoComplete="off"
+          />
+          {showErrorDescription && (
+            <div className="description-too-short">
+              Write a (short) description of your task.
+            </div>
+          )}
+        </div>
+        <div className="addTask-lower-form">
+          <label htmlFor="dueDate"></label>
+          <input
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            value={dueDate}
+            onChange={changeDueDate}
+          />
+          {showErrorDate && (
+            <div className="date-in-paste">Choose a date in the future.</div>
+          )}
+          <button
+            className="submitBtn addTaskBtn btn-style-1"
+            onClick={submitForm}
+          >
+            Add
+          </button>
+        </div>
       </div>
-      <button className="submitBtn addTaskBtn" onClick={submitForm}>
-        <img id="add-task-button" src={addButton} alt="Add task button" />
-      </button>
-      {showErrorForm && (
-        <div className="invalid-Datas"> Please, resolves error(s).</div>
-      )}
     </form>
   );
 }

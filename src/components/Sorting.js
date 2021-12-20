@@ -24,6 +24,7 @@ function Sorting(props) {
 
   return (
     <div className="sorting">
+      <label htmlFor="sorting">Sort :</label>
       <select
         name="sorting"
         id="choose-sorting"

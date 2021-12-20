@@ -5,30 +5,79 @@
   left: 0;
   right: 0;
 
-  padding: 20px 0;
-
   display: flex;
-  align-items: center;
+  flex-direction: column;
 
   background-color: $main-bkgd-color;
+
   .input-wrapper {
-    display: flex;
-    flex-direction: column;
     width: 100%;
 
+    margin-bottom: 30px;
+
     #description {
-      width: 90%;
+      width: 413px;
+      margin-top: 10px;
     }
+
     #dueDate {
-      width: min-content;
+      width: 172px;
+      margin-top: 29px;
+      margin-right: 70px;
+    }
+
+    label {
+      font-size: 20px;
+    }
+
+    &::before {
+      content: " ";
+      background-color: $main-bkgd-color;
+      position: absolute;
+      height: (150px + 30px);
+      width: $side-width - 10px;
+      left: -$side-padding;
+      top: -$side-padding;
+
+      z-index: -1;
     }
   }
 
+  .addTask-upper-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .addTask-lower-form {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .description-too-short {
+    position: absolute;
+    bottom: -1.3em;
+    font-size: 14px;
+  }
+
+  .date-in-paste {
+    position: absolute;
+    bottom: -1.3em;
+    font-size: 14px;
+  }
   .addTaskBtn {
-    width: 50px;
-    height: 50px;
-    img {
-      filter: $add-task-btn-color;
+    width: 105px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+
+    &::after {
+      content: url(../assets/images/plus-solid.svg);
+      width: 21px;
+      position: relative;
+      left: 6px;
+      top: 1px;
+      filter: invert(1);
     }
   }
 }

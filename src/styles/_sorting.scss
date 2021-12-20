@@ -1,23 +1,37 @@
 .sorting {
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 22px;
+
+  label {
+    margin-right: 5px;
+    font-size: 15px;
+  }
+
   button {
-    font-size: 20px;
-    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+    height: 20px;
     width: 15px;
     border-radius: 25px;
-    color: white;
-    padding: 0;
-    margin-left: 5px;
+    color: black;
+    margin-left: 4px;
   }
+
   select {
+    height: 20px;
+    width: 80px;
+    text-align: center;
     background-color: $select-sorting-bkgd;
     color: $select-sorting-color;
+    font-size: 15px;
     border-radius: 25px;
     appearance: none;
-    padding: 2px 5px;
-
     &:focus {
       outline: none;
     }

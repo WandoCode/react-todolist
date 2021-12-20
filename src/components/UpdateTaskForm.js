@@ -161,18 +161,21 @@ function UpdateTaskForm(props) {
         </div>
 
         <div className="lower-form">
-          <input className="submitBtn" type="submit" value="Add" />
+          <input className="submitBtn btn-style-1" type="submit" value="Add" />
 
           {showErrorForm && (
             <div className="invalid-Datas"> Please, resolves error(s).</div>
           )}
 
           {taskState ? (
-            <button onClick={toggleState} className="button-not-done">
+            <button
+              onClick={toggleState}
+              className="button-not-done btn-style-1"
+            >
               Mark as not done
             </button>
           ) : (
-            <button onClick={toggleState} className="button-done">
+            <button onClick={toggleState} className="button-done btn-style-1">
               Mark as done
             </button>
           )}

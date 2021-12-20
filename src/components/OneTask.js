@@ -20,7 +20,8 @@ function OneTask(props) {
       }
     >
       <div id={props.task.id} className="task" onClick={taskClicked}>
-        {props.task.description}{" "}
+        <div className="descr">{props.task.description}</div>
+        <div className="due-date-show">{props.task.dueDate}</div>
       </div>
 
       <button className="rmv-task-btn" onClick={removeTask}>

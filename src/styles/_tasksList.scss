@@ -1,11 +1,14 @@
 .task-sorting-container {
   .tasks-list {
+    margin-top: 25px;
   }
 
-  .task {
-    width: 100%;
-    padding: 10px;
-    overflow: hidden;
+  .descr {
+    font-size: 20px;
+  }
+
+  .due-date-show {
+    font-size: 16px;
   }
 
   .task-infos-container {
@@ -14,14 +17,30 @@
     align-items: center;
     background-color: $task-color;
 
-    margin: 8px 0;
+    border-radius: 3px;
+    height: 60px;
+    width: 413px;
+    margin: 18px 0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 
     button {
       margin-left: 10px;
     }
     &.selected {
       background-color: $selected-task-color;
+      box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
     }
+  }
+
+  .task {
+    width: 100%;
+    min-height: 80%;
+    padding-left: 10px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 
   .rmv-task-btn {
@@ -29,6 +48,7 @@
     height: $rmv-task-btn-size;
     width: $rmv-task-btn-size;
     color: $rmv-task-btn-font-color;
+    margin-right: 10px;
     &:hover {
       background-color: $rmv-task-btn-bkgd;
     }

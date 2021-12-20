@@ -1,16 +1,15 @@
 .App {
   display: flex;
-  height: 500px;
+  height: 630px;
   .side {
     height: 100%;
-    margin: 20px;
+    width: $side-width;
     background-color: $main-bkgd-color;
+    border-radius: 3px;
+    padding: $side-padding;
     overflow: auto;
     scrollbar-color: red;
   }
   .left-side {
-    width: 500px;
-    padding-right: 20px;
-    padding-left: 10px;
   }
 }

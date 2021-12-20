@@ -1,3 +1,24 @@
+@font-face {
+  font-family: "Lado";
+  font-style: normal;
+  src: local("Lado"), url(../assets/fonts/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: "Lado";
+  font-style: thin;
+  src: local("Lado"), url(../assets/fonts/Lato-Thin.ttf);
+}
+@font-face {
+  font-family: "Lado";
+  font-style: lighter;
+  src: local("Lado"), url(../assets/fonts/Lato-Light.ttf);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -129,29 +150,43 @@ table {
   border-spacing: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  background-color: black;
-  color: white;
+  font-family: "Lado";
+  background-color: #505050;
+  color: black;
+  margin-left: 180px;
+  margin-top: 120px;
 }
 
 button,
 .submitBtn {
   background: none;
   border: none;
+  font-family: "Lado";
+}
+
+select {
+  font-family: "Lado";
 }
 
 input {
-  background-color: #cccccc;
+  background-color: white;
   border: none;
-  border-radius: 10px;
-  padding: 5px 10px;
+  border-radius: 24px;
+  height: 30px;
+  font-family: "Lado";
 }
 input:focus {
   outline: none;
+}
+
+input[type=text] {
+  padding-left: 10px;
+}
+
+input[type=date] {
+  text-align: center;
+  padding: 0 20px;
 }
 
 /* Works on Firefox */
@@ -175,23 +210,26 @@ input:focus {
   border-radius: 1px;
 }
 
+.btn-style-1 {
+  border-radius: 25px;
+  background-color: #878787;
+  font-size: 20px;
+  color: white;
+}
+
 .App {
   display: flex;
-  height: 500px;
+  height: 630px;
 }
 .App .side {
   height: 100%;
-  margin: 20px;
-  background-color: #4e4e4e;
+  width: 460px;
+  background-color: #e3e3e3;
+  border-radius: 3px;
+  padding: 20px;
   overflow: auto;
   scrollbar-color: red;
 }
-.App .left-side {
-  width: 500px;
-  padding-right: 20px;
-  padding-left: 10px;
-}
-
 .addTask {
   position: -webkit-sticky;
   position: sticky;
@@ -199,54 +237,104 @@ input:focus {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px 0;
-  display: flex;
-  align-items: center;
-  background-color: #4e4e4e;
-}
-.addTask .input-wrapper {
   display: flex;
   flex-direction: column;
+  background-color: #e3e3e3;
+}
+.addTask .input-wrapper {
   width: 100%;
+  margin-bottom: 30px;
 }
 .addTask .input-wrapper #description {
-  width: 90%;
+  width: 413px;
+  margin-top: 10px;
 }
 .addTask .input-wrapper #dueDate {
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+  width: 172px;
+  margin-top: 29px;
+  margin-right: 70px;
+}
+.addTask .input-wrapper label {
+  font-size: 20px;
+}
+.addTask .input-wrapper::before {
+  content: " ";
+  background-color: #e3e3e3;
+  position: absolute;
+  height: 180px;
+  width: 450px;
+  left: -20px;
+  top: -20px;
+  z-index: -1;
+}
+.addTask .addTask-upper-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.addTask .addTask-lower-form {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.addTask .description-too-short {
+  position: absolute;
+  bottom: -1.3em;
+  font-size: 14px;
+}
+.addTask .date-in-paste {
+  position: absolute;
+  bottom: -1.3em;
+  font-size: 14px;
 }
 .addTask .addTaskBtn {
-  width: 50px;
-  height: 50px;
+  width: 105px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
 }
-.addTask .addTaskBtn img {
-  filter: invert(61%) sepia(32%) saturate(735%) hue-rotate(78deg) brightness(102%) contrast(91%);
+.addTask .addTaskBtn::after {
+  content: url(../assets/images/plus-solid.svg);
+  width: 21px;
+  position: relative;
+  left: 6px;
+  top: 1px;
+  filter: invert(1);
 }
 
 .sorting {
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 22px;
+}
+.sorting label {
+  margin-right: 5px;
+  font-size: 15px;
 }
 .sorting button {
-  font-size: 20px;
-  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  height: 20px;
   width: 15px;
   border-radius: 25px;
-  color: white;
-  padding: 0;
-  margin-left: 5px;
+  color: black;
+  margin-left: 4px;
 }
 .sorting select {
+  height: 20px;
+  width: 80px;
+  text-align: center;
   background-color: gray;
-  color: #4d4d4d;
+  color: white;
+  font-size: 15px;
   border-radius: 25px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  padding: 2px 5px;
 }
 .sorting select:focus {
   outline: none;
@@ -256,29 +344,48 @@ input:focus {
   color: #353535;
 }
 
-.task-sorting-container .task {
-  width: 100%;
-  padding: 10px;
-  overflow: hidden;
+.task-sorting-container .tasks-list {
+  margin-top: 25px;
+}
+.task-sorting-container .descr {
+  font-size: 20px;
+}
+.task-sorting-container .due-date-show {
+  font-size: 16px;
 }
 .task-sorting-container .task-infos-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #999999;
-  margin: 8px 0;
+  background-color: #c4c4c4;
+  border-radius: 3px;
+  height: 60px;
+  width: 413px;
+  margin: 18px 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 .task-sorting-container .task-infos-container button {
   margin-left: 10px;
 }
 .task-sorting-container .task-infos-container.selected {
-  background-color: #bbbbbb;
+  background-color: #fbfbfb;
+  box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+.task-sorting-container .task {
+  width: 100%;
+  min-height: 80%;
+  padding-left: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .task-sorting-container .rmv-task-btn {
   border-radius: 25px;
   height: 25px;
   width: 25px;
-  color: white;
+  color: #787878;
+  margin-right: 10px;
 }
 .task-sorting-container .rmv-task-btn:hover {
   background-color: #aaaaaa;
