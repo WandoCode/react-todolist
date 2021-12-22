@@ -11,14 +11,20 @@ function OneTask(props) {
     props.isActive(props.task.id);
   };
 
+  /* Construct responsive class for task */
+  const getClass = () => {
+    let theClass = "";
+    theClass = props.putSelectClass
+      ? "task-infos-container selected"
+      : "task-infos-container";
+
+    theClass += props.task.done ? " done" : " not-done";
+
+    return theClass;
+  };
+
   return (
-    <div
-      className={
-        props.putSelectClass
-          ? "task-infos-container selected"
-          : "task-infos-container"
-      }
-    >
+    <div className={getClass()}>
       <div id={props.task.id} className="task" onClick={taskClicked}>
         <div className="descr">{props.task.description}</div>
         <div className="due-date-show">{props.task.dueDate}</div>

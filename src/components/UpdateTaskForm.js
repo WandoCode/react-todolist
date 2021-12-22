@@ -14,11 +14,13 @@ function UpdateTaskForm(props) {
   const [notes, setNotes] = useState("");
   const [taskState, setTaskState] = useState();
   const [showErrorDescription, setshowErrorDescription] = useState(false);
-  const [showErrorForm, setShowErrorForm] = useState(false);
-  const [showErrorNotes, setShowErrorNotes] = useState(false);
+  const [succes, setSucces] = useState(false);
 
-  /* Fill form with loaded values */
   useEffect(() => {
+    /* Reset form */
+
+    setSucces(false);
+    /* Fill form with loaded values */
     setDueDate(props.defaultValues.dueDate);
     setDescription(props.defaultValues.description);
     setNotes(props.defaultValues.notes);
@@ -54,8 +56,6 @@ function UpdateTaskForm(props) {
   const getNotes = (e) => {
     if (e.target.value.length <= MAX_NOTE_LENGTH) {
       setNotes(e.target.value);
-    } else {
-      setShowErrorNotes(true);
     }
   };
 
@@ -71,9 +71,6 @@ function UpdateTaskForm(props) {
 
     /* If datas are valide: send them to DB */
     if (description.length > 0 && description.length <= MAX_LENGTH) {
-      setShowErrorForm(false);
-      setShowErrorNotes(false);
-
       /* Create the object to store in db */
       const newTask = {
         date: today,
@@ -87,12 +84,9 @@ function UpdateTaskForm(props) {
       putToDb(`http://localhost:8080/tasks/${props.defaultValues.id}`, newTask);
 
       /* Tell App that db has changed and that the component can be closed*/
-      props.askCloseTask();
       props.dbHasChanged();
     } else {
       /* If datas invalid: show adequat error messages */
-      setShowErrorForm(true);
-      setShowErrorNotes(true);
       toggleDescriptionErrorMessage(description);
     }
   };
@@ -109,35 +103,47 @@ function UpdateTaskForm(props) {
 
   /* Post object to DB */
   const putToDb = (dbURL, objectForDd) => {
-    axios.put(dbURL, objectForDd).catch(function (error) {
-      console.log(error);
-    });
+    axios
+      .put(dbURL, objectForDd)
+      .then(() => {
+        /* Display on screen that data base has been updated */
+        setSucces(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
     <form className="updateTask" onSubmit={submitForm}>
-      <button onClick={closeTask}>X</button>
+      <button onClick={closeTask}>x</button>
       <div className="inner-form">
         <div className="upper-form">
-          <label htmlFor="description">Task</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            maxLength={MAX_LENGTH}
-            value={description}
-            onChange={getDescriptionValue}
-            autoComplete="off"
-          />
-
-          <label htmlFor="dueDate">Due date</label>
-          <input
-            type="date"
-            name="dueDate"
-            id="dueDate"
-            value={dueDate}
-            onChange={changeDueDate}
-          />
+          <label htmlFor="dueDate">
+            <input
+              type="date"
+              name="dueDate"
+              id="dueDate"
+              value={dueDate}
+              onChange={changeDueDate}
+            />
+          </label>
+          <label htmlFor="description">
+            <input
+              type="text"
+              name="description"
+              id="description"
+              maxLength={MAX_LENGTH}
+              value={description}
+              onChange={getDescriptionValue}
+              autoComplete="off"
+            />
+          </label>
+          {showErrorDescription && (
+            <div className="description-too-short-update">
+              Write a (short) description of your task.
+            </div>
+          )}
         </div>
         <div className="mid-form">
           <textarea
@@ -148,38 +154,26 @@ function UpdateTaskForm(props) {
             onChange={getNotes}
             autoComplete="off"
           ></textarea>
-          {showErrorNotes && (
-            <div className="notes-error">
-              Try to write less than {MAX_NOTE_LENGTH}
-            </div>
-          )}
-          {showErrorDescription && (
-            <div className="description-too-short">
-              Write a (short) description of your task.
-            </div>
-          )}
         </div>
 
         <div className="lower-form">
           <input className="submitBtn btn-style-1" type="submit" value="Add" />
-
-          {showErrorForm && (
-            <div className="invalid-Datas"> Please, resolves error(s).</div>
-          )}
 
           {taskState ? (
             <button
               onClick={toggleState}
               className="button-not-done btn-style-1"
             >
-              Mark as not done
+              Done
             </button>
           ) : (
             <button onClick={toggleState} className="button-done btn-style-1">
-              Mark as done
+              Continue
             </button>
           )}
         </div>
+
+        {succes && <div className="succes"> Saved!</div>}
       </div>
     </form>
   );

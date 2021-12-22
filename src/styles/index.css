@@ -215,6 +215,7 @@ input[type=date] {
   background-color: #878787;
   font-size: 20px;
   color: white;
+  margin-right: 10px;
 }
 
 .App {
@@ -227,6 +228,7 @@ input[type=date] {
   background-color: #e3e3e3;
   border-radius: 3px;
   padding: 20px;
+  margin-right: 15px;
   overflow: auto;
   scrollbar-color: red;
 }
@@ -358,11 +360,10 @@ input[type=date] {
   justify-content: space-between;
   align-items: center;
   background-color: #c4c4c4;
-  border-radius: 3px;
   height: 60px;
   width: 413px;
   margin: 18px 0;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.233);
 }
 .task-sorting-container .task-infos-container button {
   margin-left: 10px;
@@ -380,6 +381,9 @@ input[type=date] {
   flex-direction: column;
   justify-content: space-evenly;
 }
+.task-sorting-container .done {
+  color: #d8d8d8;
+}
 .task-sorting-container .rmv-task-btn {
   border-radius: 25px;
   height: 25px;
@@ -396,10 +400,57 @@ input[type=date] {
   flex-direction: column;
   align-items: flex-end;
 }
-.updateTask .inner-form {
-  margin-top: 10px;
+.updateTask > button {
+  color: #787878;
 }
-.updateTask textarea {
+.updateTask .inner-form {
+  margin-top: 12px;
+  height: 100%;
+  width: 100%;
+}
+.updateTask #description {
+  width: 100%;
+  margin-top: 29px;
+}
+.updateTask .upper-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.updateTask .mid-form {
+  margin-top: 40px;
+}
+.updateTask .mid-form textarea {
+  font-family: "Lado";
+  font-size: 16px;
   width: 100%;
   height: 200px;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 7px;
+}
+.updateTask .description-too-short-update {
+  position: absolute;
+  bottom: -1.3em;
+  font-size: 14px;
+}
+.updateTask .lower-form {
+  margin-top: 10px;
+}
+.updateTask .lower-form .button-done {
+  background-color: #c9c9c9;
+}
+.updateTask .lower-form .button-not-done {
+  background-color: #4e4e4e;
+}
+.updateTask .succes {
+  width: 100%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #616161;
+  margin-top: 20px;
+  border-radius: 3px;
 }/*# sourceMappingURL=index.css.map */

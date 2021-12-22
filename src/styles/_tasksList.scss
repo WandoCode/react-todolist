@@ -17,11 +17,10 @@
     align-items: center;
     background-color: $task-color;
 
-    border-radius: 3px;
     height: 60px;
     width: 413px;
     margin: 18px 0;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.233);
 
     button {
       margin-left: 10px;
@@ -41,6 +40,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+  }
+
+  .done {
+    color: $light-font-color;
   }
 
   .rmv-task-btn {

@@ -2,11 +2,62 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  .inner-form {
-    margin-top: 10px;
+  & > button {
+    color: $rmv-task-btn-font-color;
   }
-  textarea {
+  .inner-form {
+    margin-top: 12px;
+    height: 100%;
     width: 100%;
-    height: 200px;
+  }
+
+  #description {
+    width: 100%;
+    margin-top: 29px;
+  }
+
+  .upper-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .mid-form {
+    margin-top: 40px;
+    textarea {
+      font-family: "Lado";
+      font-size: 16px;
+      width: 100%;
+      height: 200px;
+      border: none;
+      resize: none;
+      outline: none;
+      padding: 7px;
+    }
+  }
+  .description-too-short-update {
+    position: absolute;
+    bottom: -1.3em;
+    font-size: 14px;
+  }
+  .lower-form {
+    margin-top: 10px;
+
+    .button-done {
+      background-color: $done-btn-bkgd;
+    }
+    .button-not-done {
+      background-color: $not-done-btn-bkgd;
+    }
+  }
+
+  .succes {
+    width: 100%;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $succes-bkgd;
+    margin-top: 20px;
+    border-radius: 3px;
   }
 }
