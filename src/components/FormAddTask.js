@@ -50,7 +50,7 @@ function FormAddTask(props) {
   };
 
   /* Submit form's datas to DB if valid*/
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
 
     /* If datas are valide: send them to DB */
@@ -69,10 +69,12 @@ function FormAddTask(props) {
       };
 
       /* Send object to DB */
-      postToDb("http://localhost:8080/tasks", newTask);
+      const data = await postToDb("http://localhost:8080/tasks", newTask);
 
       /* Tell App that db has changed */
-      props.dbHasChanged();
+      props.dbHasChanged(data.id);
+
+      /* tell App to open the new task's update form */
 
       /* Rest form values*/
       setDueDate(today);
@@ -103,10 +105,9 @@ function FormAddTask(props) {
   };
 
   /* Post object to DB */
-  const postToDb = (dbURL, objectForDd) => {
-    axios.post(dbURL, objectForDd).catch(function (error) {
-      console.log(error);
-    });
+  const postToDb = async (dbURL, objectForDd) => {
+    let res = await axios.post(dbURL, objectForDd);
+    return res.data;
   };
 
   return (

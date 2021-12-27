@@ -9,8 +9,9 @@ function App() {
   const [tasksObjectArray, setTasksObjectArray] = useState([]);
   const [updateTaskForm, setUpdateTaskForm] = useState();
   const [lookDb, setLookDb] = useState(true);
+  const [currentID, setCurrentID] = useState();
 
-  //* LOAD DATAS *///
+  ///* HOOKS *///
   /* Look into db when new datas are available */
   useEffect(() => {
     if (lookDb) {
@@ -22,17 +23,36 @@ function App() {
     }
   }, [lookDb]);
 
-  /* Ask to reload datas */
-  const dbHasChanged = () => {
-    setLookDb(true);
+  /* Show the UpdateTaskForm when datas are loaded or handleTaskClicked fct is called*/
+  useEffect(() => {
+    /* Check taht the object with given id is loaded from db */
+    if (
+      currentID &&
+      tasksObjectArray.find((el) => {
+        return el.id === currentID;
+      })
+    )
+      /* Show task details */
+      showUpdateTaskForm();
+  }, [tasksObjectArray, currentID]);
+
+  /* Show update task form component for the current task */
+  const showUpdateTaskForm = () => {
+    if (currentID)
+      setUpdateTaskForm(
+        <div className="right-side side">
+          <UpdateTaskForm
+            askCloseTask={closeTask}
+            defaultValues={tasksObjectArray.find((task) => {
+              return task.id === currentID;
+            })}
+            dbHasChanged={dbHasChanged}
+          />
+        </div>
+      );
   };
 
-  /* Ask to remove the updateForm */
-  const closeTask = () => {
-    setUpdateTaskForm(undefined);
-  };
-
-  ///* TASK LIST DISPLAY *///
+  ///* PROPS FUNCTION *///
   /* Remove the task from list */
   const removeTask = (id) => {
     /* Remove it from db */
@@ -42,20 +62,21 @@ function App() {
     setLookDb(true);
     closeTask();
   };
+  /* Lower comp ask to reload datas */
+  const dbHasChanged = (id) => {
+    setCurrentID(id);
+    setLookDb(true);
+  };
+
+  /* Lower comp ask to remove the updateForm */
+  const closeTask = () => {
+    setUpdateTaskForm(undefined);
+    setLookDb(true);
+  };
 
   /* Handle click on a task of the list*/
   const handleTaskClicked = (id) => {
-    setUpdateTaskForm(
-      <div className="right-side side">
-        <UpdateTaskForm
-          askCloseTask={closeTask}
-          defaultValues={tasksObjectArray.find((task) => {
-            return task.id === id;
-          })}
-          dbHasChanged={dbHasChanged}
-        />
-      </div>
-    );
+    setCurrentID(id);
   };
 
   return (
