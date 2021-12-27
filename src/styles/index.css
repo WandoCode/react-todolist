@@ -166,6 +166,10 @@ button,
   border: none;
   font-family: "Lado";
 }
+button:hover,
+.submitBtn:hover {
+  box-shadow: 0px 0px 10px 2px black;
+}
 
 select {
   font-family: "Lado";
@@ -180,6 +184,12 @@ input {
 }
 input:focus {
   outline: none;
+}
+input:hover {
+  box-shadow: 0px 0px 10px 2px black;
+}
+input:focus {
+  outline: 2px solid white;
 }
 
 input[type=text] {
@@ -232,10 +242,27 @@ input[type=date] {
   border-radius: 3px;
   padding: 20px;
   overflow: auto;
-  scrollbar-color: red;
+}
+@media screen and (max-width: 600px) {
+  .App .side {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 .App .left-side {
   margin-right: 45px;
+}
+@media screen and (max-width: 600px) {
+  .App .left-side {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .App {
+    width: 100vw;
+    flex-direction: column;
+    height: 100vh;
+  }
 }
 
 .addTask {
@@ -423,6 +450,9 @@ input[type=date] {
   flex-direction: column;
   position: relative;
 }
+.updateTask .upper-form .error {
+  border: 2px solid red;
+}
 .updateTask .mid-form {
   margin-top: 40px;
 }
@@ -445,11 +475,8 @@ input[type=date] {
   display: flex;
   margin-top: 10px;
 }
-.updateTask .lower-form .button-done {
-  background-color: #c9c9c9;
-}
-.updateTask .lower-form .button-not-done {
-  background-color: #4e4e4e;
+.updateTask .lower-form .checkbox-status:hover {
+  box-shadow: none;
 }
 .updateTask .lower-form label {
   display: flex;

@@ -20,6 +20,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    .error {
+      border: 2px solid red;
+    }
   }
   .mid-form {
     margin-top: 40px;
@@ -43,12 +46,10 @@
     display: flex;
     margin-top: 10px;
 
-    .button-done {
-      background-color: $done-btn-bkgd;
+    .checkbox-status:hover {
+      box-shadow: none;
     }
-    .button-not-done {
-      background-color: $not-done-btn-bkgd;
-    }
+
     label {
       display: flex;
       justify-content: center;

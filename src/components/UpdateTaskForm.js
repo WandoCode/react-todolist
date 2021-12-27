@@ -25,6 +25,7 @@ function UpdateTaskForm(props) {
     setDescription(props.defaultValues.description);
     setNotes(props.defaultValues.notes);
     setTaskState(props.defaultValues.done);
+    setshowErrorDescription(false);
   }, [props.defaultValues]);
 
   /* Handle due date input*/
@@ -132,6 +133,7 @@ function UpdateTaskForm(props) {
               type="text"
               name="description"
               id="description"
+              className={showErrorDescription ? "error" : ""}
               maxLength={MAX_LENGTH}
               value={description}
               onChange={getDescriptionValue}

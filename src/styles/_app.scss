@@ -9,9 +9,21 @@
     border-radius: 3px;
     padding: $side-padding;
     overflow: auto;
-    scrollbar-color: red;
+    @media screen and (max-width: 600px) {
+      width: 100vw;
+      height: 100vh;
+    }
   }
   .left-side {
     margin-right: $side-margin-right;
+    @media screen and (max-width: 600px) {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100vw;
+    flex-direction: column;
+    height: 100vh;
   }
 }

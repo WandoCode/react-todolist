@@ -71,6 +71,7 @@ function App() {
   /* Lower comp ask to remove the updateForm */
   const closeTask = () => {
     setUpdateTaskForm(undefined);
+    setCurrentID(null);
   };
 
   /* Handle click on a task of the list*/
