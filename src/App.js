@@ -71,12 +71,11 @@ function App() {
   /* Lower comp ask to remove the updateForm */
   const closeTask = () => {
     setUpdateTaskForm(undefined);
-    setLookDb(true);
   };
 
   /* Handle click on a task of the list*/
   const handleTaskClicked = (id) => {
-    setCurrentID(id);
+    currentID === id ? closeTask() : setCurrentID(id);
   };
 
   return (

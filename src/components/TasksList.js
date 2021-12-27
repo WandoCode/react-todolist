@@ -76,7 +76,8 @@ function TasksList(props) {
   ///* SHOW ACTIVE ELEMENT *///
   /* Set the id of the current active task of the list */
   const isActive = (id) => {
-    setActiveTask(id);
+    // If given id already active, set it inactive
+    id === activeTask ? setActiveTask(undefined) : setActiveTask(id);
   };
 
   ///* TASK UPDATE *///

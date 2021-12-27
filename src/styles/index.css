@@ -269,7 +269,7 @@ input[type=date] {
   content: " ";
   background-color: #252525;
   position: absolute;
-  height: 180px;
+  height: 170px;
   width: 450px;
   left: -20px;
   top: -20px;
@@ -442,6 +442,7 @@ input[type=date] {
   font-size: 14px;
 }
 .updateTask .lower-form {
+  display: flex;
   margin-top: 10px;
 }
 .updateTask .lower-form .button-done {

@@ -25,7 +25,6 @@ function UpdateTaskForm(props) {
     setDescription(props.defaultValues.description);
     setNotes(props.defaultValues.notes);
     setTaskState(props.defaultValues.done);
-    console.log(props.defaultValues.done);
   }, [props.defaultValues]);
 
   /* Handle due date input*/

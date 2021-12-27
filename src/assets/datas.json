@@ -29,7 +29,7 @@
       "dueDate": "2021-12-27",
       "description": "azeaze",
       "notes": "",
-      "done": "false",
+      "done": false,
       "id": 6
     },
     {
@@ -37,7 +37,7 @@
       "dueDate": "2021-12-27",
       "description": "qsdqsd",
       "notes": "",
-      "done": false,
+      "done": true,
       "id": 7
     },
     {
@@ -45,8 +45,16 @@
       "dueDate": "2021-12-27",
       "description": "sss",
       "notes": "",
-      "done": false,
+      "done": true,
       "id": 8
+    },
+    {
+      "date": "2021-12-27",
+      "dueDate": "2021-12-27",
+      "description": "qsdqsd",
+      "notes": "eterterterteterte",
+      "done": false,
+      "id": 9
     }
   ]
 }
