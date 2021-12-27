@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import addButton from "../assets/images/plus-solid.svg";
 
 const axios = require("axios");
 

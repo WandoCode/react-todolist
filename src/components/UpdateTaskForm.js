@@ -12,7 +12,7 @@ function UpdateTaskForm(props) {
   const [dueDate, setDueDate] = useState("");
   const [description, setDescription] = useState("");
   const [notes, setNotes] = useState("");
-  const [taskState, setTaskState] = useState();
+  const [taskState, setTaskState] = useState(false);
   const [showErrorDescription, setshowErrorDescription] = useState(false);
   const [succes, setSucces] = useState(false);
 
@@ -25,13 +25,8 @@ function UpdateTaskForm(props) {
     setDescription(props.defaultValues.description);
     setNotes(props.defaultValues.notes);
     setTaskState(props.defaultValues.done);
+    console.log(props.defaultValues.done);
   }, [props.defaultValues]);
-
-  /* Handle button */
-  const toggleState = (e) => {
-    e.preventDefault();
-    setTaskState(!taskState);
-  };
 
   /* Handle due date input*/
   const changeDueDate = (e) => {
@@ -64,6 +59,11 @@ function UpdateTaskForm(props) {
     e.preventDefault();
     props.askCloseTask();
   };
+
+  /* Handle checkBox input */
+  function handleCheckBox() {
+    taskState ? setTaskState(false) : setTaskState(true);
+  }
 
   /* Submit form's datas to DB if valid*/
   const submitForm = (e) => {
@@ -159,18 +159,17 @@ function UpdateTaskForm(props) {
         <div className="lower-form">
           <input className="submitBtn btn-style-1" type="submit" value="Add" />
 
-          {taskState ? (
-            <button
-              onClick={toggleState}
-              className="button-not-done btn-style-1"
-            >
-              Done
-            </button>
-          ) : (
-            <button onClick={toggleState} className="button-done btn-style-1">
-              Continue
-            </button>
-          )}
+          <label htmlFor="status">
+            Done
+            <input
+              type="checkbox"
+              name="status"
+              className="checkbox-status"
+              onChange={handleCheckBox}
+              value={taskState}
+              checked={taskState}
+            />
+          </label>
         </div>
 
         {succes && <div className="succes"> Saved!</div>}

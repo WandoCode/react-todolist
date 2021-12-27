@@ -153,9 +153,11 @@ table {
 body {
   font-family: "Lado";
   background-color: #505050;
-  color: black;
-  margin-left: 180px;
-  margin-top: 120px;
+  height: 100vh;
+  color: #a1a1a1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button,
@@ -212,26 +214,30 @@ input[type=date] {
 
 .btn-style-1 {
   border-radius: 25px;
-  background-color: #878787;
+  background-color: #dbdbdb;
   font-size: 20px;
-  color: white;
+  color: #a1a1a1;
   margin-right: 10px;
 }
 
 .App {
   display: flex;
   height: 630px;
+  width: 1010px;
 }
 .App .side {
   height: 100%;
   width: 460px;
-  background-color: #e3e3e3;
+  background-color: #252525;
   border-radius: 3px;
   padding: 20px;
-  margin-right: 15px;
   overflow: auto;
   scrollbar-color: red;
 }
+.App .left-side {
+  margin-right: 45px;
+}
+
 .addTask {
   position: -webkit-sticky;
   position: sticky;
@@ -241,7 +247,7 @@ input[type=date] {
   right: 0;
   display: flex;
   flex-direction: column;
-  background-color: #e3e3e3;
+  background-color: #252525;
 }
 .addTask .input-wrapper {
   width: 100%;
@@ -261,7 +267,7 @@ input[type=date] {
 }
 .addTask .input-wrapper::before {
   content: " ";
-  background-color: #e3e3e3;
+  background-color: #252525;
   position: absolute;
   height: 180px;
   width: 450px;
@@ -359,7 +365,7 @@ input[type=date] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c4c4c4;
+  background-color: #505050;
   height: 60px;
   width: 413px;
   margin: 18px 0;
@@ -369,7 +375,7 @@ input[type=date] {
   margin-left: 10px;
 }
 .task-sorting-container .task-infos-container.selected {
-  background-color: #fbfbfb;
+  background-color: #dbdbdb;
   box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
 .task-sorting-container .task {
@@ -388,11 +394,11 @@ input[type=date] {
   border-radius: 25px;
   height: 25px;
   width: 25px;
-  color: #787878;
+  color: #252525;
   margin-right: 10px;
 }
 .task-sorting-container .rmv-task-btn:hover {
-  background-color: #aaaaaa;
+  background-color: #252525;
 }
 
 .updateTask {
@@ -401,7 +407,7 @@ input[type=date] {
   align-items: flex-end;
 }
 .updateTask > button {
-  color: #787878;
+  color: #252525;
 }
 .updateTask .inner-form {
   margin-top: 12px;
@@ -443,6 +449,11 @@ input[type=date] {
 }
 .updateTask .lower-form .button-not-done {
   background-color: #4e4e4e;
+}
+.updateTask .lower-form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .updateTask .succes {
   width: 100%;

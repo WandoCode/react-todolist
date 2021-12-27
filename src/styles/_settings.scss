@@ -132,9 +132,11 @@ table {
 body {
   font-family: "Lado";
   background-color: rgba(80, 80, 80, 1);
-  color: black;
-  margin-left: 180px;
-  margin-top: 120px;
+  height: 100vh;
+  color: $font-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button,
@@ -193,6 +195,6 @@ input[type="date"] {
   background-color: $add-task-btn-bkgd;
 
   font-size: 20px;
-  color: white;
+  color: $font-color;
   margin-right: 10px;
 }

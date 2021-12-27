@@ -48,6 +48,11 @@
     .button-not-done {
       background-color: $not-done-btn-bkgd;
     }
+    label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .succes {

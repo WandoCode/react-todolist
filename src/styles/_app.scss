@@ -1,16 +1,17 @@
 .App {
   display: flex;
   height: 630px;
+  width: 2 * ($side-width + $side-margin-right);
   .side {
     height: 100%;
     width: $side-width;
     background-color: $main-bkgd-color;
     border-radius: 3px;
     padding: $side-padding;
-    margin-right: $side-margin-right;
     overflow: auto;
     scrollbar-color: red;
   }
   .left-side {
+    margin-right: $side-margin-right;
   }
 }
